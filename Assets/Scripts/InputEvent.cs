@@ -8,17 +8,19 @@ public class InputEvent : MonoBehaviour
     public delegate void Inputdelegate();
     public static event Inputdelegate OnInput;
     [SerializeField] Spline spline;
-    [SerializeField] 
-
+    [SerializeField] private float time_position;
+    [SerializeField] private float x_value;
+    [SerializeField] private float noderange = 2f;
+    [SerializeField] private float multiplyer = 1f;
     private void Start()
     {
-        OnInput += GrowRoot;
+        OnInput += GrowBranchOnTimePosition;
         spline.GenerateMain();
     }
 
     private void OnDisable()
     {
-        OnInput -= GrowRoot;
+        OnInput -= GrowBranchOnTimePosition;
     }
 
     private void Update()
@@ -28,15 +30,19 @@ public class InputEvent : MonoBehaviour
             OnInput();
         }
     }
-
-    private void GrowRoot()
+    private void GrowBranchOnTimePosition()
     {
-        //TODO make spline with direction and node
-        spline.GenerateBranch();
+        spline.GenerateBranch(new Vector3(0, time_position, 0), new Vector3(0, time_position, 0), new Vector3(noderange * multiplyer, time_position+GenerateRandomYNumber(), 0), new Vector3(noderange * multiplyer, 0, 0));
     }
 
-    public void Timer()
+    private float GenerateRandomYNumber()
     {
+        float random_number;
 
+        random_number = Random.Range(0.1f, 10.9f);
+
+        return random_number;
     }
+
+
 }

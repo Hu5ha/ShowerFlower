@@ -82,10 +82,10 @@ namespace SplineMesh {
             UpdateAfterCurveChanged();
         }
 
-        public void GenerateBranch()
+        public void GenerateBranch(Vector3 position, Vector3 direction, Vector3 position2, Vector3 direction2)
         {
-            AddNode(new SplineNode(new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
-            AddNode(new SplineNode(new Vector3(0, 6, 0), new Vector3(0, 0, 0)));
+            AddNode(new SplineNode(position, direction));
+            AddNode(new SplineNode(position2 , direction2));
             RaiseNodeListChanged(new ListChangedEventArgs<SplineNode>()
             {
                 type = ListChangeType.clear
