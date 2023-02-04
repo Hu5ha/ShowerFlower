@@ -82,12 +82,13 @@ namespace SplineMesh {
             UpdateAfterCurveChanged();
         }
 
-        public void GenerateBranch(Vector3 position, Vector3 direction, Vector3 position2, Vector3 direction2)
+        public void GenerateBranch(Vector3 position, Vector3 direction, Vector3 position3, Vector3 direction3)
         {
             nodes.Clear();
             curves.Clear();
             AddNode(new SplineNode(position, direction));
-            AddNode(new SplineNode(position2 , direction2));
+            AddNode(new SplineNode(position3 , direction3));
+            //AddNode(new SplineNode(position2 + new Vector3 (1,1,1), direction2));
             RaiseNodeListChanged(new ListChangedEventArgs<SplineNode>()
             {
                 type = ListChangeType.clear
