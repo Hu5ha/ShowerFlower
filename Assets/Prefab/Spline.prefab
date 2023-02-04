@@ -147,7 +147,7 @@ MonoBehaviour:
   rotation: {x: 0, y: 90, z: 0}
   scale: {x: 1, y: 1, z: 1}
   startScale: 1
-  DurationInSecond: 6
+  DurationInSecond: 1
 --- !u!114 &4461447614383443523
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -69,12 +69,12 @@ namespace SplineMesh {
         //     UpdateAfterCurveChanged();
         //}
         //TODO
-        public void GenerateMain()
+        public void GenerateMain(float height)
         {
             nodes.Clear();
             curves.Clear();
             AddNode(new SplineNode(new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
-            AddNode(new SplineNode(new Vector3(0, 6, 0), new Vector3(0, 0, 0)));
+            AddNode(new SplineNode(new Vector3(0, height, 0), new Vector3(0, height, 0)));
             RaiseNodeListChanged(new ListChangedEventArgs<SplineNode>()
             {
                 type = ListChangeType.clear
