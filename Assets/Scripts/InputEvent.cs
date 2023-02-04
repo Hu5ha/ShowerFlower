@@ -7,7 +7,13 @@ public class InputEvent : MonoBehaviour
 {
     public delegate void Inputdelegate();
     public static event Inputdelegate OnInput;
-    [SerializeField] Spline spline;
+
+
+    [SerializeField] List<Spline> spline = new List<Spline>();
+    [SerializeField] GameObject spline_prefab;
+    [SerializeField] int spline_counter = 0;
+
+
     [SerializeField] private float time_position;
     [SerializeField] private float x_value;
     [SerializeField] private float noderange = 2f;
@@ -15,7 +21,9 @@ public class InputEvent : MonoBehaviour
     private void Start()
     {
         OnInput += GrowBranchOnTimePosition;
-        spline.GenerateMain();
+      
+        spline.Add(Instantiate(spline_prefab, new Vector3(0, 0, 0), Quaternion.identity).gameObject.GetComponent<Spline>());
+        spline[spline_counter].GenerateMain();
     }
 
     private void OnDisable()
@@ -32,7 +40,9 @@ public class InputEvent : MonoBehaviour
     }
     private void GrowBranchOnTimePosition()
     {
-        spline.GenerateBranch(new Vector3(0, time_position, 0), new Vector3(0, time_position, 0), new Vector3(noderange * multiplyer, time_position+GenerateRandomYNumber(), 0), new Vector3(noderange * multiplyer, 0, 0));
+        spline.Add(Instantiate(spline_prefab, new Vector3(0, 0, 0), Quaternion.identity).gameObject.GetComponent<Spline>());
+        spline_counter++;
+        spline[spline_counter].GenerateBranch(new Vector3(0, time_position, 0), new Vector3(0, time_position, 0), new Vector3(noderange * multiplyer, time_position+GenerateRandomYNumber(), 0), new Vector3(noderange * multiplyer, 0, 0));
     }
 
     private float GenerateRandomYNumber()

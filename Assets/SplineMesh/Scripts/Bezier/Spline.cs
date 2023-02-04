@@ -58,16 +58,16 @@ namespace SplineMesh {
         /// <summary>
         /// Clear the nodes and curves, then add two default nodes for the reset spline to be visible in editor.
         /// </summary>
-        private void Reset() {
-            nodes.Clear();
-            curves.Clear();
-            AddNode(new SplineNode(new Vector3(5, 0, 0), new Vector3(5, 0, -3)));
-            AddNode(new SplineNode(new Vector3(10, 0, 0), new Vector3(10, 0, 3)));
-            RaiseNodeListChanged(new ListChangedEventArgs<SplineNode>() {
-                type = ListChangeType.clear
-            });
-            UpdateAfterCurveChanged();
-        }
+        //private void Reset() {
+        //    nodes.Clear();
+        //    curves.Clear();
+        //    AddNode(new SplineNode(new Vector3(5, 0, 0), new Vector3(5, 0, -3)));
+        //    AddNode(new SplineNode(new Vector3(10, 0, 0), new Vector3(10, 0, 3)));
+        //    RaiseNodeListChanged(new ListChangedEventArgs<SplineNode>() {
+        //        type = ListChangeType.clear
+        //    });
+        //     UpdateAfterCurveChanged();
+        //}
         //TODO
         public void GenerateMain()
         {
@@ -84,6 +84,8 @@ namespace SplineMesh {
 
         public void GenerateBranch(Vector3 position, Vector3 direction, Vector3 position2, Vector3 direction2)
         {
+            nodes.Clear();
+            curves.Clear();
             AddNode(new SplineNode(position, direction));
             AddNode(new SplineNode(position2 , direction2));
             RaiseNodeListChanged(new ListChangedEventArgs<SplineNode>()

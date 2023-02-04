@@ -55,8 +55,8 @@ namespace SplineMesh {
 
         void EditorUpdate() {
             rate += Time.deltaTime / DurationInSecond;
-            if (rate > 1) {
-                rate --;
+            if (rate >= 1) {
+                rate = 1f ;
             }
             Contort();
         }
