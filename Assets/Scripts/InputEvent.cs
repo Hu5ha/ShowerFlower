@@ -28,19 +28,19 @@ public class InputEvent : MonoBehaviour
     [SerializeField] private Vector3 current_spline_end;
 
     //timer
-    private InputTimer time_position;
+    public InputTimer time_position;
 
     //variables
     [SerializeField] private float height = 12f;
     [SerializeField] private int growth_direction = 1;
     //[SerializeField] private float time_position;
     [SerializeField] private float branch_end_node_range = 2f;
-    [SerializeField] private float random_range= 2f;
+    [SerializeField] private float random_range = 2f;
     [SerializeField] private float noderange = 2f;
     [SerializeField] private float multiplyer = 1f;
     private void Start()
     {
-        OnInput += GrowBranchOnTimePosition;
+        //    OnInput += GrowBranchOnTimePosition;
         OnInputWithParameter += GrowBranchOnTimePositionParameter;
         time_position = GetComponent<InputTimer>();
 
@@ -56,7 +56,7 @@ public class InputEvent : MonoBehaviour
 
     private void OnDisable()
     {
-        OnInput -= GrowBranchOnTimePosition;
+        //OnInput -= GrowBranchOnTimePosition;
         OnInputWithParameter -= GrowBranchOnTimePositionParameter;
     }
 
@@ -66,8 +66,14 @@ public class InputEvent : MonoBehaviour
         {
             OnInput();
         }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            growth_direction = 1;
+            OnInputWithParameter(multiplyer);
+        }
         if (Input.GetKeyDown(KeyCode.S))
         {
+            growth_direction = -1;
             OnInputWithParameter(multiplyer);
         }
         if (Input.GetKeyDown(KeyCode.A))
@@ -80,24 +86,24 @@ public class InputEvent : MonoBehaviour
     {
         return height;
     }
-    private void GrowBranchOnTimePosition()
-    {
-        spline.Add(Instantiate(spline_prefab, new Vector3(0, time_position.GetCurrentTimerValue(), 0), Quaternion.identity).gameObject.transform.GetChild(0).gameObject.GetComponent<Spline>());
-        spline_counter++;
-        current_spline_start = new Vector3(0, time_position.GetCurrentTimerValue(), 0);
-        current_spline_end = new Vector3(noderange * multiplyer, time_position.GetCurrentTimerValue() + GenerateRandomYNumber(), 0);
-        spline[spline_counter].GenerateBranch(current_spline_start, new Vector3(0, time_position.GetCurrentTimerValue(), 0), current_spline_end, new Vector3(noderange * multiplyer, time_position.GetCurrentTimerValue() + GenerateRandomYNumber(), 0));
-        if (spline[spline_counter].gameObject.GetComponent<ExampleGrowingRoot>().startScale > .6)
-            spline[spline_counter].gameObject.GetComponent<ExampleGrowingRoot>().startScale = spline_start_scale / (spline_counter / 2);
-    }
+    //private void GrowBranchOnTimePosition()
+    //{
+    //    spline.Add(Instantiate(spline_prefab, new Vector3(0, time_position.GetCurrentTimerValue(), 0), Quaternion.identity).gameObject.transform.GetChild(0).gameObject.GetComponent<Spline>());
+    //    spline_counter++;
+    //    current_spline_start = new Vector3(0, time_position.GetCurrentTimerValue(), 0);
+    //    current_spline_end = new Vector3(noderange * multiplyer, time_position.GetCurrentTimerValue() + GenerateRandomYNumber(), 0);
+    //    spline[spline_counter].GenerateBranch(current_spline_start, new Vector3(0, time_position.GetCurrentTimerValue(), 0), current_spline_end, new Vector3(noderange * multiplyer, time_position.GetCurrentTimerValue() + GenerateRandomYNumber(), 0));
+    //    if (spline[spline_counter].gameObject.GetComponent<ExampleGrowingRoot>().startScale > .6)
+    //        spline[spline_counter].gameObject.GetComponent<ExampleGrowingRoot>().startScale = spline_start_scale / (spline_counter / 2);
+    //}
     //if left player: negate growth_direction
     private void GrowBranchOnTimePositionParameter(float boost)
     {
         spline.Add(Instantiate(spline_prefab, new Vector3(0, time_position.GetCurrentTimerValue(), 0), Quaternion.identity).gameObject.transform.GetChild(0).gameObject.GetComponent<Spline>());
         spline_counter++;
         current_spline_start = new Vector3(0, time_position.GetCurrentTimerValue(), 0);
-        current_spline_end = new Vector3((noderange * boost)*growth_direction, time_position.GetCurrentTimerValue() + GenerateRandomYNumber(), 0);
-        spline[spline_counter].GenerateBranch(current_spline_start, new Vector3((current_spline_start.x + 1)* growth_direction, time_position.GetCurrentTimerValue(), 0), current_spline_end, new Vector3((noderange * boost)*growth_direction, time_position.GetCurrentTimerValue() + GenerateRandomYNumber(), 0));
+        current_spline_end = new Vector3((noderange * boost) * growth_direction, time_position.GetCurrentTimerValue() + GenerateRandomYNumber(), 0);
+        spline[spline_counter].GenerateBranch(current_spline_start, new Vector3((current_spline_start.x + 1) * growth_direction, time_position.GetCurrentTimerValue(), 0), current_spline_end, new Vector3((noderange * boost) * growth_direction, time_position.GetCurrentTimerValue() + GenerateRandomYNumber(), 0));
         if (spline[spline_counter].gameObject.GetComponent<ExampleGrowingRoot>().startScale > 1f)
             spline[spline_counter].gameObject.GetComponent<ExampleGrowingRoot>().startScale = spline_start_scale / (spline_counter / 2);
         NewBranchPosition(0);
@@ -112,7 +118,7 @@ public class InputEvent : MonoBehaviour
     }
     public float GetBranchEndPosition()
     {
-        return time_position.GetCurrentTimerValue()*2;
+        return time_position.GetCurrentTimerValue() * 2;
 
     }
 

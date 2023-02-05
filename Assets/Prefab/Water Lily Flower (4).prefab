@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6868320606154154959}
   - component: {fileID: 6877184299247245591}
   - component: {fileID: 6829052930995491733}
+  - component: {fileID: -8494310391346649623}
+  - component: {fileID: 9038556061270805194}
   m_Layer: 0
   m_Name: Water Lily Flower (4)
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6855120927002146957}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 18.399998, y: 57.21, z: -2.99}
   m_LocalScale: {x: 1000, y: 1000, z: 1000}
   m_ConstrainProportionsScale: 1
@@ -97,3 +99,39 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.0013862882
   m_Center: {x: 0.000029215938, y: 0.0006529944, z: -0.00011140527}
+--- !u!111 &-8494310391346649623
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855120927002146957}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 6c84daebe2f09b240b772dee3b23914f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 6c84daebe2f09b240b772dee3b23914f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &9038556061270805194
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855120927002146957}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b0fb53b6e62181e41ad8a3ab96de16bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
