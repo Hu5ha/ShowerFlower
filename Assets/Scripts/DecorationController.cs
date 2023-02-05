@@ -13,19 +13,13 @@ public class DecorationController : MonoBehaviour
     void Start()
     {
         inputEvent = GetComponent<InputEvent>();
-        InputEvent.OnInput += Decorate;
-        InputEvent.OnInputWithParameter += CallDecorate;
+        InputEvent.NewBranchPosition += Decorate;
     }
 
-    private void CallDecorate(float boost = 0)
-    {
-        //Decorate();
-    }
-
-    private void Decorate()
+    private void Decorate(float position)
     {
         
-       // Instantiate(flower, new Vector3(0,inputEvent.GetBranchEndPosition(),0), Quaternion.Euler(-90, 0, 0));
+       Instantiate(flower, new Vector3(0,inputEvent.GetBranchEndPosition(),-2), Quaternion.Euler(-90, 0, 0));
     }
 
     // Update is called once per frame

@@ -18,7 +18,6 @@ public class InputTimer : MonoBehaviour
         InputEvent.OnInput += StartTimer;
         InputEvent.OnInputWithParameter += StartTimerParameter;
         inputEvent = GetComponent<InputEvent>();
-        max_timer = inputEvent.GetTreeHeight()-10;
     }
 
     private void StartTimer()

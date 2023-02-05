@@ -73,7 +73,7 @@ namespace SplineMesh {
         {
             nodes.Clear();
             curves.Clear();
-            AddNode(new SplineNode(new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+            AddNode(new SplineNode(new Vector3(0, -1, 0), new Vector3(0, 1, 0)));
             AddNode(new SplineNode(new Vector3(0, height, 0), new Vector3(0, height, 0)));
             RaiseNodeListChanged(new ListChangedEventArgs<SplineNode>()
             {
