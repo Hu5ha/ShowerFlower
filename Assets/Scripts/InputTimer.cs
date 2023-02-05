@@ -7,7 +7,7 @@ public class InputTimer : MonoBehaviour
 {
 
     [SerializeField] private float start_timer = 0f;
-    [SerializeField] private float timer = -1f;
+    [SerializeField] private float timer = float.NaN;
     [SerializeField] private float max_timer;
 
     //INputEventScript
@@ -45,7 +45,7 @@ public class InputTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer > -1f && timer < max_timer)
+        if(timer != float.NaN && timer < max_timer)
         {
             CountTimerUp();
         }
