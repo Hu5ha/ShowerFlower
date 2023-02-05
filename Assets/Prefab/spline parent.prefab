@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6003022023953973516}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -39,10 +39,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3199646916675977900}
     m_Modifications:
+    - target: {fileID: 7298290073038538071, guid: 1edc8aadf1d7ee44195c7a903bf6425f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 157c47e0c183e304d98ecf181ace8326, type: 2}
     - target: {fileID: 7298290073038538072, guid: 1edc8aadf1d7ee44195c7a903bf6425f, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7298290073593883232, guid: 1edc8aadf1d7ee44195c7a903bf6425f, type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 157c47e0c183e304d98ecf181ace8326, type: 2}
     - target: {fileID: 7298290073593883261, guid: 1edc8aadf1d7ee44195c7a903bf6425f, type: 3}
       propertyPath: m_Name
       value: PlainSpline
