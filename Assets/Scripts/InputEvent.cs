@@ -8,6 +8,8 @@ public class InputEvent : MonoBehaviour
     //events
     public delegate void Inputdelegate();
     public static event Inputdelegate OnInput;
+    public static event InputWithParameter KeyPressLeft;
+    public static event InputWithParameter KeyPressRight;
 
     public delegate void InputWithParameter(float boost);
     public static event InputWithParameter OnInputWithParameter;
@@ -42,6 +44,8 @@ public class InputEvent : MonoBehaviour
     {
         //    OnInput += GrowBranchOnTimePosition;
         OnInputWithParameter += GrowBranchOnTimePositionParameter;
+        KeyPressLeft += LeftDirection;
+        KeyPressRight += GrowBranchOnTimePositionParameter;
         time_position = GetComponent<InputTimer>();
 
         spline.Add(Instantiate(spline_prefab, new Vector3(0, 0, 0), Quaternion.identity).gameObject.transform.GetChild(0).gameObject.GetComponent<Spline>());
@@ -52,6 +56,17 @@ public class InputEvent : MonoBehaviour
         spline[spline_counter].gameObject.GetComponent<ExampleGrowingRoot>().DurationInSecond = branch_animation_duration;
 
 
+    }
+
+    public void LeftDirection(float somethinig)
+    {
+        growth_direction = -1;
+        OnInputWithParameter(somethinig);
+    }
+    public void RightDirection(float somethinig)
+    {
+        growth_direction = 1;
+        OnInputWithParameter(somethinig);
     }
 
     private void OnDisable()
